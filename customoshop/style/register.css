@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap"); /* Different font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif; /* Changed font */
+    font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -12,7 +12,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #999; /* Grey background */
+    background: url(bg/backg2.jpg);
+    background-size: cover;
 }
 
 .wrapper {

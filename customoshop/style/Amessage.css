@@ -9,6 +9,10 @@ body
             border: 1px solid #c2a97c;
             background-color: white;
             border-radius: 5px;
+            /* Add background image to message container */
+            background-image: url(backg2.jpg);
+            background-size: cover; /* Ensure the background image covers the entire container */
+            background-position: center; /* Center the background image */
 
         }
         .message {

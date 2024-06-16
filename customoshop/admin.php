@@ -1,37 +1,25 @@
 <?php
 
-    $db_server = "localhost";
-    $db_user = "root";
-    $db_pass = "";
-    $db_name = "customoshop(1)";
-    $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
+$db_server = "localhost";
+$db_user = "root";
+$db_pass = "";
+$db_name = "customoshop(1)";
+$conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
 
-    session_start();
-    if($_SESSION['user_type'] != 'A'){
-        header("location: login.php");
-    }
-    if(isset($_GET['logout'])){
-        session_destroy();
-        header("location: login.php");
-        die();
-    }
+session_start();
+if ($_SESSION['user_type'] != 'A') {
+    header("location: login.php");
+    exit(); // Stop further execution
+}
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("location: login.php");
+    exit(); // Stop further execution
+}
 
-    if(isset($_GET['Manage Menu'])){
-    header("location: add_item.php");}
+$s_user_id = $_SESSION['user_id'];
 
-    if(isset($_GET['Sales Report'])){
-        header("location: sales.php");}
-
-    if(isset($_GET['Messages'])){
-    header("location: A_message.php");}
-
-    if(isset($_GET['Feedbacks'])){
-    header("location: A_feedback.php");}
-    
-
-    $s_user_id = $_SESSION['user_id'];
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_order'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_order'])) {
     $order_id = $_POST['order_id'];
     $order_status = mysqli_real_escape_string($conn, $_POST['order_status']);
     $order_price = mysqli_real_escape_string($conn, $_POST['order_price']);
@@ -75,7 +63,7 @@ $order_results = mysqli_query($conn, $getorders);
         <th>Customer</th>
         <th>Item Name</th>
         <th>Quantity</th>
-        <th>ADesign</th>
+        <th>Product Description</th>
         <th>Status</th>
         <th>Price</th>
         <th>Action</th>
@@ -87,7 +75,7 @@ $order_results = mysqli_query($conn, $getorders);
                 <td><?php echo $order['fullname']; ?></td>
                 <td><?php echo $order['item_name']; ?></td>
                 <td><?php echo $order['item_qty']; ?></td>
-                <td><?php echo $order['design_desc']; ?></td>
+                <td><?php echo $order['product_desc']; ?></td> <!-- Display product description -->
                 <td>
                     <input type="text" name="order_status" value="<?php echo $order['order_status']; ?>" required>
                 </td>
@@ -102,7 +90,6 @@ $order_results = mysqli_query($conn, $getorders);
         </tr>
     <?php } ?>
 </table>
-            
 
 </body>
 </html>

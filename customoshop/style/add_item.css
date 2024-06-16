@@ -1,5 +1,10 @@
 body{
-    background-color: rgb(220, 220, 220); /* Greyish background */
+    font-family: Arial, Helvetica, sans-serif; /* Adjusted font for body */
+    margin: 0;
+    padding: 0;
+    background: rgb(220, 220, 220); /* Greyish background */
+    background: url(bg/backg1.jpg) no-repeat center center fixed; /* Add your background image URL */
+    background-size: cover; /* Ensure the background image covers the entire body */
 }
 
 label{
